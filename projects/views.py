@@ -47,3 +47,6 @@ def searchprofile(request):
     else:
         message = "You haven't searched for any profile"
     return render(request, 'search.html.html', {'message': message})
+
+def addproject(request):
+    pass
