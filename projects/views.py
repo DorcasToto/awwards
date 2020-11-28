@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from .forms import profileForm,UserUpdateForm,RegistrationForm
+from .forms import profileForm,UserUpdateForm,RegistrationForm,projectForm
 from .models import Projects,Profile
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
@@ -11,6 +11,7 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
+    Projects = Projects.objects.all()
     return render(request,'index.html')
 def register(request):
     if request.method=="POST":
@@ -48,5 +49,17 @@ def searchprofile(request):
         message = "You haven't searched for any profile"
     return render(request, 'search.html.html', {'message': message})
 
-def addproject(request):
-    pass
+@login_required
+def addProject(request):
+    current_user = request.user
+    user_profile = Profile.objects.get(user = current_user)
+    if request.method == 'POST':
+        form = projectForm(request.POST,request.FILES)
+        if form.is_valid:
+            newProj = form.save(commit = False)
+            newProj.user = user_profile
+            newProj.save()
+        return redirect('home')  
+    else:
+        form = projectForm()
+    return render(request,'newProject.html',{'form':form})    

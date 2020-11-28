@@ -14,6 +14,10 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username','email'] 
 
+class projectForm(forms.ModelForm):
+    class Meta:
+        model = Projects
+        fields = ['title','description','projectscreenshot','projecturl']
 class RegistrationForm(UserCreationForm):
     email=forms.EmailField()
     class Meta:
@@ -24,5 +28,6 @@ class RegistrationForm(UserCreationForm):
         user=super().save(commit=False)
         user.email=self.cleaned_data['email']
         if commit:
+
             user.save()
         return user                

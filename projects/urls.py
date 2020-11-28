@@ -9,7 +9,7 @@ urlpatterns = [
     path('register/',views.register, name='registration'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('search/', views.searchprofile, name='search'),
-    path('newproject',views.addProject,name = project)
+    path('newproject/',views.addProject,name = 'project')
 ]
 
 if settings.DEBUG:
