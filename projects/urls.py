@@ -8,6 +8,7 @@ urlpatterns = [
     path('',views.index, name = 'home'),
     path('register/',views.register, name='registration'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+     path('search/', views.searchprofile, name='search'),
 ]
 
 if settings.DEBUG:

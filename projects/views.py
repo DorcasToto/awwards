@@ -33,3 +33,17 @@ def register(request):
         'profForm': prof
     }
     return render(request, 'users/register.html', params)
+
+def searchprofile(request):
+    if 'searchUser' in request.GET and request.GET['searchUser']:
+        name = request.GET.get("searchUser")
+        searchResults = Profile.search_profile(name)
+        message = f'name'
+        params = {
+            'results': searchResults,
+            'message': message
+        }
+        return render(request, 'search.html', params)
+    else:
+        message = "You haven't searched for any profile"
+    return render(request, 'search.html.html', {'message': message})
