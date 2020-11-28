@@ -3,42 +3,44 @@
 <h3>Welcome to Awwards</h3>
 {{user.username}}
 
-<!-- Container -->
-<div class="row">
+<div class="container-fluid">
 
-    <!-- Column -->
-    <div class="col-md-4 mb-4 d-flex align-items-stretch">
-
-        <!--Card-->
-        <div class="card">
-
-            <!--Card image-->
-            <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg"
-                    class="card-img-top" alt="">
-                <a href="#">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-                <!--Title-->
-                <h4 class="card-title">Card title</h4>
-                <!--Text-->
-                <p class="card-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
-                    est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-                    tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat
-                    facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-            </div>
-
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h2 class="display-4">Fluid jumbotron</h2>
+            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
         </div>
-        <!--/.Card-->
-
     </div>
-    <!-- Column -->
+    <div class="row">
+        {%for proj in projects%}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="view overlay">
+                    <img src="{{proj.projectscreenshot.url}}" class="card-img-top" alt="">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h4 class="">{{proj.title}}</h4>
+                    <p class="">{{proj.description}}</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm">
+                            <p>By: {{proj.user}}</p>
+                        </div>
+                        <div class="col-sm">
+                            <a href="{{proj.projecturl}}">Check Out</a>
+                        </div>
+                        <div class="col-sm">
+                            <p>Posted on:{{proj.datecreated}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
 </div>
-<!-- Container -->
+
 {%endblock%}
