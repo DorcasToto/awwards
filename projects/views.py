@@ -11,8 +11,8 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
-    Projects = Projects.objects.all()
-    return render(request,'index.html')
+    projects = Projects.objects.all()
+    return render(request,'index.html',{"projects":projects})
 def register(request):
     if request.method=="POST":
         form=RegistrationForm(request.POST)
