@@ -49,7 +49,7 @@ def searchprofile(request):
         message = "You haven't searched for any profile"
     return render(request, 'search.html.html', {'message': message})
 
-@login_required
+@login_required(login_url='users/login/')   
 def addProject(request):
     current_user = request.user
     user_profile = Profile.objects.get(user = current_user)
@@ -63,3 +63,6 @@ def addProject(request):
     else:
         form = projectForm()
     return render(request,'newProject.html',{'form':form})    
+
+def profile(request):
+    return render(request,'profile.html')   
