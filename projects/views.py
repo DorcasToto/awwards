@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from .forms import profileForm,UserUpdateForm,RegistrationForm,projectForm
+from .forms import profileForm,UserUpdateForm,RegistrationForm,projectForm,UpdateUserProfileForm
 from .models import Projects,Profile
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
@@ -49,7 +49,7 @@ def searchprofile(request):
         message = "You haven't searched for any profile"
     return render(request, 'search.html.html', {'message': message})
 
-@login_required(login_url='users/login/')   
+@login_required(login_url='login')   
 def addProject(request):
     current_user = request.user
     user_profile = Profile.objects.get(user = current_user)
@@ -66,4 +66,21 @@ def addProject(request):
 
 def profile(request,id):
     prof = Profile.objects.get(user = id)
-    return render(request,'profile.html',{"profile":prof})   
+    return render(request,'profile.html',{"profile":prof})
+
+def editprofile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
+            prof_form.save()
+            return redirect('profile', user.username)
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        prof_form = UpdateUserProfileForm(instance=request.user.profile)
+    params = {
+        'user_form': user_form,
+        'prof_form': prof_form
+    }
+    return render(request, 'editprofile.html', params)
