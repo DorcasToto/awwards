@@ -14,28 +14,26 @@
             </a>
             {% endif %}
             <hr>
-            {% if results %}
-            {% for res in results %}
 
-            <div class="row">
-                <div class="row"></div>
-                <div class="col-md-4">
-                    <img src="{{res.user.photo.url}}" alt="oops cant display"
-                        class="rounded-circle border ml-3 mt-2  mr-3" width="55" height="55">
-                </div>
-                <div class="col-md-8">
-                    <span><strong><a href="">{{res.user.username}}</a></strong></span>
-                </div>
-            </div>
         </div>
-        <hr>
-
-        {% endfor %}
-        {% endif %}
 
     </div>
-</div>
+
+    {% if results %}
+    {% for res in results %}
+
+    <div class="row pt-3">
+        <div class="col-md-8">
+            <img src="{{res.projectscreenshot.url}}" alt="oops cant display" height="300px">
+        </div>
+        <div class="col-md-4">
+            <span><strong><a href="{{res.projecturl}}">{{res.description}}</a></strong></span>
+        </div>
+    </div>
+    {%endfor%}
+    {%endif%}
 
 </div>
+
 
 {% endblock %}

@@ -29,4 +29,8 @@ class Projects(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, default='', null=True ,related_name='author')
     datecreated= models.DateField(auto_now_add=True )
 
+    @classmethod
+    def search_projects(cls, name):
+        return cls.objects.filter(title__icontains=name).all()
+
 
