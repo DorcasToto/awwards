@@ -13,6 +13,7 @@ urlpatterns = [
     path('profile/<id>/',views.profile,name = 'profile'),
     path('editprofile/',views.editprofile,name = 'editprofile'), 
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('api/profile',views.ProfileList.as_view())
 
 ]
 

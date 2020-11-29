@@ -8,6 +8,10 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.urls import reverse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Profile,Projects
+from .serializer import ProfileSerializer,ProjectSerializer
 
 # Create your views here.
 def index(request):
@@ -84,3 +88,9 @@ def editprofile(request):
         'prof_form': prof_form
     }
     return render(request, 'editprofile.html', params)
+
+class ProfileList(APIView):
+    def get(self,request,format = None):
+        all_profile = Profile.objects.all()
+        serializerdata = ProfileSerializer(all_profile,many = True)
+        return Response(serializerdata.data)
