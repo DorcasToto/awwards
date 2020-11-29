@@ -1,0 +1,17 @@
+{%include 'base.html'%}
+{%block content%}
+<p>{{project.title}}</p>
+<p>{{project.description }}</p>
+<div class="container">
+
+    <form method="post" action="" role="form ">
+        {% csrf_token %}
+        <div class="input-field col s12">
+            {{form.text}}
+            <label for="textarea1">Opinion</label>
+        </div>>
+        <button type="submit" name="action">Review</button>
+
+    </form>
+</div>
+{%endblock%}

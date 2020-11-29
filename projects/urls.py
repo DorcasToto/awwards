@@ -17,6 +17,7 @@ urlpatterns = [
     path('api/projects',views.ProjectList.as_view()),
     path('projects/<id>/',views.projects,name = 'projects'),
     path(r'ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('rate/<id>/',views.rate,name = 'rate')
 
 ]
 

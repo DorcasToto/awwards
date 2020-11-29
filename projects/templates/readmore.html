@@ -1,5 +1,5 @@
 <div class="class" style="font-family: 'Jost', sans-serif;">
-    {% include 'base.html'%}
+    {% extends 'base.html'%}
     {% load ratings %}
     {%block content%}
     <div class="container mt-5">
@@ -30,10 +30,25 @@
                 </div>
             </div>
         </div>
-        <div class="ratings">
+        <iv class="ratings">
             <h3 class="pt-3">Rate</h3>
-            {% ratings projects %}
-        </div>
-        <div>
-            {%endblock%}
-        </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h4>Usability</h4>
+                    {% ratings projects %}
+                    <h4>Usability</h4>
+                </div>
+                <div class="col-sm">
+                    <h4>Design</h4>
+                    {% ratings projects %}
+                </div>
+                <div class="col-sm">
+                    <h4>Content</h4>
+                    {% ratings projects %}
+                </div>
+            </div>
+            <a href="{% url "rate" projects.id %}">Review</a>
+    </div>
+    <div>
+        {%endblock%}
+    </div>
