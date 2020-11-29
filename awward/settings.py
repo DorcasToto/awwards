@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'projects',
+    'star_ratings',
     'rest_framework',
     'bootstrap3',
     'django.contrib.admin',
@@ -119,6 +120,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+#ratings
+# STAR_RATINGS_RERATE = False
+# STAR_RATINGS_RANGE 
+# STAR_RATINGS_ANONYMOUS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
