@@ -1,17 +1,31 @@
 {%include 'base.html'%}
 {%block content%}
+{%load bootstrap3%}
 <p>{{project.title}}</p>
 <p>{{project.description }}</p>
-<div class="container">
+<div class="container" style="font-family: 'Jost', sans-serif;">
+    <div class="row  p-5 mt-5">
 
-    <form method="post" action="" role="form ">
-        {% csrf_token %}
-        <div class="input-field col s12">
-            {{form.text}}
-            <label for="textarea1">Opinion</label>
-        </div>>
-        <button type="submit" name="action">Review</button>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="card p-3">
 
-    </form>
+                    <form class="form" action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="row pl-5">
+                            <button type="submit" class="btn btn-sm btn-outline-primary"
+                                style="margin-top:14px; margin-left:-10px">Review</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 {%endblock%}

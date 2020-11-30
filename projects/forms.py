@@ -38,10 +38,10 @@ class RegistrationForm(UserCreationForm):
         return user
 
 class RateForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea())
-    rate = forms.ChoiceField(choices=RATE_CHOICES,widget=forms.Select(),required=True)
+    # text = forms.CharField(widget=forms.Textarea())
+    # rate = forms.ChoiceField(choices=RATE_CHOICES,widget=forms.Select(),required=True)
 
     class Meta:
         model = Review
-        fields = ('text','rate')
+        fields = ['text','content','usability','design']
 
