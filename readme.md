@@ -16,6 +16,12 @@ As a user of the web application you will be able to:
 6. Generate APIs
 7. Review a project
 
+## Endpoints
+You can access data from the application through the following endpoints:
+
+1. https://awwards123.herokuapp.com/api/projects to have a look at all projects
+2. https://awwards123.herokuapp.com/api/profile to have a look at the profiles
+
 ## Setup and installations
 * Clone Project to your machine
 * Activate a virtual environment on terminal: `source virtual/bin/activate`
