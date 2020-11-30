@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Projects,Profile,Review,RATE_CHOICES
+from .models import Projects,Profile,Revieww,RATE_CHOICES
 
 class profileForm(forms.ModelForm):
     class Meta:
@@ -42,6 +42,6 @@ class RateForm(forms.ModelForm):
     # rate = forms.ChoiceField(choices=RATE_CHOICES,widget=forms.Select(),required=True)
 
     class Meta:
-        model = Review
-        fields = ['text','content','usability','design']
+        model = Revieww
+        fields = ['text','design','usability','content']
 

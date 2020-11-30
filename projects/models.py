@@ -46,7 +46,7 @@ RATE_CHOICES = [
 (10,'10- Master Piece'),
 ]
 
-class Review(models.Model):
+class Revieww(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     projects = models.ForeignKey(Projects,on_delete = models.CASCADE)
     date = models.DateField(auto_now_add=True)

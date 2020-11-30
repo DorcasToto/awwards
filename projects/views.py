@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Profile,Projects
+from .models import Profile,Projects,Revieww
 from .serializer import ProfileSerializer,ProjectSerializer
 
 # Create your views here.
@@ -108,6 +108,8 @@ def projects(request,id):
 
 @login_required(login_url='login')   
 def rate(request,id):
+    # reviews = Revieww.objects.get(projects_id = id).all()
+    # print
     project = Projects.objects.get(id = id)
     user = request.user
     if request.method == 'POST':
