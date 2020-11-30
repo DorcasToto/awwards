@@ -93,7 +93,7 @@ Open [localhost:8000](http://127.0.0.1:8000/)
 ## Built With
 
 * [Python3.6](https://docs.python.org/3/)
-* Django 2.2.8
+* Django 3.1
 * Postgresql 
 * Boostrap
 * HTML
