@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'projects',
+    'cloudinary',
     'star_ratings',
     'rest_framework',
     'bootstrap3',
